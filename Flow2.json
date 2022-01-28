@@ -1,0 +1,112 @@
+[
+    {
+        "id": "fab2ca517f80f7a3",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "18a3e3fc0425b7f7",
+        "type": "inject",
+        "z": "fab2ca517f80f7a3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "15",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "14e8a145198d40a3"
+            ]
+        ]
+    },
+    {
+        "id": "14e8a145198d40a3",
+        "type": "function",
+        "z": "fab2ca517f80f7a3",
+        "name": "Convertir Fecha",
+        "func": "// Lo que está después de “//” son comentarios\n// Crea un objeto Date a partir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al sigueinte nodo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 180,
+        "wires": [
+            [
+                "445b2732f2942212",
+                "6c3a1430e7e647e8"
+            ]
+        ]
+    },
+    {
+        "id": "445b2732f2942212",
+        "type": "debug",
+        "z": "fab2ca517f80f7a3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "6c3a1430e7e647e8",
+        "type": "ui_text",
+        "z": "fab2ca517f80f7a3",
+        "group": "ee35520976b6229f",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "La hora es",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 680,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "ee35520976b6229f",
+        "type": "ui_group",
+        "name": "Bloque de Hora",
+        "tab": "f74307acac564597",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f74307acac564597",
+        "type": "ui_tab",
+        "name": "Hora",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
